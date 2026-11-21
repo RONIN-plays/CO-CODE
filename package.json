@@ -1,0 +1,25 @@
+{
+  "name": "cocode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Collaborative code editor with voice chat",
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c blue,green \"node --watch server/index.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "monaco-editor": "0.52.0",
+    "ws": "8.23.0",
+    "y-monaco": "0.1.6",
+    "y-protocols": "1.0.6",
+    "yjs": "13.6.20"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.0",
+    "typescript": "5.6.3",
+    "vite": "5.4.21"
+  }
+}

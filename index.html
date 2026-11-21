@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CoCode</title>
+  </head>
+  <body>
+    <div id="join" class="join">
+      <form id="join-form" class="join-card">
+        <h1>CoCode</h1>
+        <p class="muted">Write code together and talk while you do it.</p>
+        <label>
+          Your name
+          <input id="name" required maxlength="32" autocomplete="nickname" />
+        </label>
+        <label>
+          Room
+          <input id="room" required maxlength="64" pattern="[a-zA-Z0-9_\-]+" title="Letters, numbers, - and _" />
+        </label>
+        <label>
+          Password <span class="hint">(optional — sets one if the room is new)</span>
+          <input id="password" type="password" maxlength="128" autocomplete="current-password" />
+        </label>
+        <p id="join-error" class="error" hidden></p>
+        <button type="submit" class="primary">Join room</button>
+      </form>
+    </div>
+
+    <div id="app" class="app" hidden>
+      <aside class="sidebar">
+        <header class="room-header">
+          <span id="status" class="status" title="Connecting"></span>
+          <strong id="room-name"></strong>
+          <button id="lock" class="small" title="Set a room password">Lock</button>
+          <button id="invite" class="small" title="Copy invite link">Invite</button>
+        </header>
+
+        <section class="panel">
+          <div class="panel-title">
+            <span>Files</span>
+            <button id="new-file" class="icon" title="New file">+</button>
+          </div>
+          <ul id="files" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title"><span>People</span></div>
+          <ul id="people" class="list"></ul>
+        </section>
+
+        <section class="voice">
+          <button id="voice-btn" class="primary">Join voice</button>
+          <button id="mute-btn" hidden>Mute</button>
+          <button id="screen-btn" hidden>Share screen</button>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <div class="toolbar">
+          <span id="current-file" class="grow"></span>
+          <button id="run-btn" class="small primary" title="Run (Ctrl+Enter)" disabled>Run</button>
+          <button id="stop-btn" class="small danger" hidden>Stop</button>
+          <button id="panel-btn" class="small" title="Toggle bottom panel (Ctrl+`)">Panel</button>
+        </div>
+        <div class="editor-area">
+          <div id="editor" class="editor"></div>
+          <div id="screens" class="screens"></div>
+        </div>
+        <div id="bottom-panel" class="bottom-panel"></div>
+      </main>
+
+      <aside class="chat">
+        <div class="panel-title"><span>Chat</span></div>
+        <div id="messages" class="messages"></div>
+        <form id="chat-form" class="chat-form">
+          <input id="chat-input" placeholder="Message…" maxlength="2000" autocomplete="off" />
+        </form>
+      </aside>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
